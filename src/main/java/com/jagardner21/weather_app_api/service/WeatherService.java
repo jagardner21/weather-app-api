@@ -22,24 +22,13 @@ public class WeatherService {
         this.restTemplate = restTemplate;
     }
 
-    public ResponseEntity<?> getWeather(String city) {
-        try {
-            String url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
+    public ResponseEntity<WeatherResponse> getWeather(String city) {
 
-            WeatherResponse response = restTemplate.getForObject(url, WeatherResponse.class);
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
 
-            if (response != null) {
-                System.out.println("Response: " + response.getId());
-                return ResponseEntity.ok(response);
-            } else {
-                return ResponseEntity.status(500).body("Error: Response is null");
-            }
-        } catch (RestClientException e) {
-            return ResponseEntity.status(500).body("Error: " + e.getMessage());
-        }
+        WeatherResponse response = restTemplate.getForObject(url, WeatherResponse.class);
+        return ResponseEntity.ok(response);
     }
-
-
 
 
     // Enable this method to test the RestTemplate and ensure it is working

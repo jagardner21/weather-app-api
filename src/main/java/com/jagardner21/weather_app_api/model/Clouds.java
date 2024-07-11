@@ -1,13 +1,9 @@
 package com.jagardner21.weather_app_api.model;
 
-public class Clouds {
-    private int all;
+import lombok.Data;
 
+@Data
+public class Clouds {
     // getters and setters
-    public int getAll() {
-        return all;
-    }
-    public void setAll(int all) {
-        this.all = all;
-    }
+    private int all;
 }

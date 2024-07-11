@@ -22,7 +22,7 @@ public class WeatherController {
 
     // TODO: base64 encode the apiKey at a minimum
     @GetMapping(value = "/weather", produces = "application/json")
-    public ResponseEntity<?> getWeather(@RequestParam String city) {
+    public ResponseEntity<WeatherResponse> getWeather(@RequestParam String city) {
         return weatherService.getWeather(city);
     }
 }
